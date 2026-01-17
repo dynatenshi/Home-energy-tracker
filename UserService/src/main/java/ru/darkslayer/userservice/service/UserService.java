@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.darkslayer.userservice.dto.UserDto;
 import ru.darkslayer.userservice.entity.User;
+import ru.darkslayer.userservice.exceptions.UserNotFoundException;
 import ru.darkslayer.userservice.repository.UserRepository;
 
 @Slf4j
@@ -34,14 +35,14 @@ public class UserService {
     }
 
     public UserDto getUserById(Long id) {
-        return userRepository.findById(id)
-                .map(this::toDto)
-                .orElse(null);
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException(id));
+        return toDto(user);
     }
 
     public void updateUser(Long id, UserDto request) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("User with id '" + id + "' not found!"));
+                .orElseThrow(() -> new UserNotFoundException(id));
 
         user.setName(request.getName());
         user.setSurname(request.getSurname());
@@ -54,9 +55,10 @@ public class UserService {
     }
 
     public void deleteUser(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("User with id '" + id + "' not found!"));
-        userRepository.delete(user);
+        if (!userRepository.existsById(id)) {
+            throw new UserNotFoundException(id);
+        }
+        userRepository.deleteById(id);
     }
 
     private UserDto toDto(User user) {
