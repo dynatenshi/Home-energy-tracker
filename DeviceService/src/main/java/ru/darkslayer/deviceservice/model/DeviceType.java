@@ -1,8 +1,8 @@
-package ru.darkslayer.model;
+package ru.darkslayer.deviceservice.model;
 
 public enum DeviceType {
     SPEAKER,
-    CAMERE,
+    CAMERA,
     THERMOSTAT,
     LIGHT,
     LOCK,

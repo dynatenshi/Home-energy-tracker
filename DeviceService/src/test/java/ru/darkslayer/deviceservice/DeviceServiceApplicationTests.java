@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.darkslayer.deviceservice.entity.Device;
 import ru.darkslayer.deviceservice.repository.DeviceRepository;
-import ru.darkslayer.model.DeviceType;
+import ru.darkslayer.deviceservice.model.DeviceType;
 
 @Slf4j
 @SpringBootTest

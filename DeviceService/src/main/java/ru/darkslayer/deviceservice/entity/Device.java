@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.darkslayer.model.DeviceType;
+import ru.darkslayer.deviceservice.model.DeviceType;
 
 @Entity
 @Table(name = "devices")
