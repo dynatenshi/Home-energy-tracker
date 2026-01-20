@@ -12,7 +12,7 @@
 5. Полный стек разворачивается одной командой через Docker Compose
 
 ## Технологии:
-Java 17, Spring (Boot, Web, Data JPA, AI), PostgreSQL, Ollama, InfluxDB, Apache Kafka, Docker
+Java 17, Spring (Boot, Web, Data JPA, AI), Flyway, PostgreSQL, Ollama, InfluxDB, Apache Kafka, Docker
 
 ## Запуск
 
