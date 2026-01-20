@@ -32,4 +32,5 @@ public class Device {
 
     @Column(name = "user_id")
     private Long userId;
+
 }

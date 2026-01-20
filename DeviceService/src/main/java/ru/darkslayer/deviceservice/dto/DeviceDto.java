@@ -6,14 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.darkslayer.deviceservice.model.DeviceType;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
 public class DeviceDto {
     private Long id;
     private String name;
     private DeviceType type;
     private String location;
     private Long userId;
+    private double energyConsumed;
 }

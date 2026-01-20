@@ -8,6 +8,8 @@ import ru.darkslayer.deviceservice.entity.Device;
 import ru.darkslayer.deviceservice.exceptions.DeviceNotFoundException;
 import ru.darkslayer.deviceservice.repository.DeviceRepository;
 
+import java.util.List;
+
 @Service
 @Transactional
 public class DeviceService {
@@ -50,6 +52,12 @@ public class DeviceService {
             throw new DeviceNotFoundException(id);
         }
         deviceRepository.deleteById(id);
+    }
+
+    public List<DeviceDto> getAllDevicesByUserId(Long userId) {
+        return deviceRepository.findAllByUserId(userId).stream()
+                .map(this::toDto)
+                .toList();
     }
 
     private DeviceDto toDto(Device device) {
